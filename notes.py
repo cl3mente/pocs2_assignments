@@ -6,34 +6,45 @@ import random
 import re
 import sys
 
+#
+# Complete the 'activityNotifications' function below.
+#
+# The function is expected to return an INTEGER.
+# The function accepts following parameters:
+#  1. INTEGER_ARRAY expenditure
+#  2. INTEGER d
+#
+
+def activityNotifications(expenditure, d):
+    # Write your code here
+    
+    notif = 0
+    
+    for i in range(d, len(expenditure)):
+        
+        arr = expenditure[i-d:i]
+        arr.sort()
+        if d%2 == 1:
+            median = arr[(len(arr)//2)]
+        else:
+            n1 = arr[(len(arr)//2)]
+            n2 = arr[(len(arr)//2)+1]
+            median = (n1 + n2)/2
+        if expenditure[i] >= 2*median:
+            notif += 1
+    return notif
 
 
 if __name__ == '__main__':
-    n = int(input().strip())
 
-    genes = input().rstrip().split()
+    first_multiple_input = input().rstrip().split()
 
-    health = list(map(int, input().rstrip().split()))
+    n = int(first_multiple_input[0])
 
-    s = int(input().strip())
-    
-    scoreList = []
+    d = int(first_multiple_input[1])
 
-    for s_itr in range(s):
-        first_multiple_input = input().rstrip().split()
+    expenditure = list(map(int, input().rstrip().split()))
 
-        first = int(first_multiple_input[0])
+    result = activityNotifications(expenditure, d)
 
-        last = int(first_multiple_input[1])
-
-        d = first_multiple_input[2]
-        
-        totalScore = 0
-    
-        for i in range(first, last+1):
-            matchList = re.findall("?=(%s)"%genes[i], d)
-            totalScore += health[i] * len(matchList)
-            
-        scoreList.append(totalScore)
-        
-    print(min(scoreList), max(scoreList))
+    print(result)
