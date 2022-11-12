@@ -1,16 +1,14 @@
 
-# with open("rosalind_subs.txt") as f:
-#     f = f.readlines()
-#     s = f[0]
-#     pattern = f[1]
+with open("rosalind_subs.txt") as f:
+    f = f.readlines()
+    s = f[0]
+    pattern = f[1]
 
-import re as re
+result = []
 
-s = "AACTGTGCTAGTCGTAGTATATATGGCGGCATTATATATA"
-pattern = "ATAT"
+for i in range(len(s)-len(pattern)):
+    if s[i:i+len(pattern)] == pattern:
+        result.append(i+1)
 
-match = re.search(pattern, s)
-
-result = match.start
-
-print(result)
+print(*result)
+print(pattern, s)
