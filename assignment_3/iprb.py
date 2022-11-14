@@ -1,10 +1,12 @@
 with open("rosalind_iprb.txt") as file:
     k, m, n = map(int, list(file.read().split()))
 
+tot = k+n+m
+tot2 = tot*(tot-1)
 
-t = k+n+m
+aaxaa = (n*(n-1))/tot2
+Aaxaa = (n*m)/tot2
+AaxAa = 0.25 * (m*(m-1))/(tot2)
+prob_a = aaxaa + Aaxaa + AaxAa
 
-prob_a = ((m*n)/(t**2-1)) + ((n**2-1)/(t**2-1)) + 1/4*((m**2-1)/(t**2-1))
-prob_A = 1-prob_a
-
-print(prob_A)
+print(1-prob_a)
