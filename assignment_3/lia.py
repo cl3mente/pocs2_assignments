@@ -1,3 +1,4 @@
+import math as m
 with open("rosalind_lia.txt") as f:
     k, N = list(map(int, f.read().split()))
 
@@ -9,8 +10,10 @@ prob_inv = 0
 for i in range(N):
     prob_AaBb = 0.25**i
     pnot_AaBb = 0.75**(gentot-i)
-    prob_inv += prob_AaBb*pnot_AaBb
+    comb = m.factorial(gentot)/(m.factorial(i)*m.factorial(gentot-i))
+    prob_inv += prob_AaBb*pnot_AaBb*comb
 
 prob = 1-prob_inv
 
 print('{0:.4}'.format(prob))
+

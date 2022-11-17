@@ -5,7 +5,7 @@ seqlist = [str(s.seq) for s in seq]
 # print(seqlist)
 
 profile = [[0 for j in range(len(seqlist[0]))] for i in range(4)]
-# print(profile)
+print(profile)
 
 for s in seqlist:
     # print(s)
@@ -21,7 +21,7 @@ for s in seqlist:
 
 for i in range(4):
     profile[i] = list(map(str, profile[i]))
-# print(profile)
+print(profile)
 
 consensus = []
 for i in range(len(profile[0])):
