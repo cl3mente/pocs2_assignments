@@ -5,27 +5,32 @@ with open("rosalind_prob.txt") as f:
     s = f[0]
     A = [float(x) for x in f[1].split()]
 
-print(s,A)
+print(s.strip(),A)
 result = []
 
-for i in range(len(A)):
-    gc_content = A[i]
-    at_content = 1-gc_content
-    prob_G = gc_content/2
-    prob_A = at_content/2
+for i in A:
+    GC = i
+    AT = 1-i
+    probG = GC/2
+    probA = AT/2
 
     prob = 1
+
     for base in s:
         if base == "A" or base == "T":
-            prob *= prob_A
-        else:
-            prob *= prob_G
+            prob *= probA
+        if base == "G" or base == "C":
+            prob *= probG
 
     prob = math.log10(prob)
-    result.append('{0:.4}'.format(prob))
+    result.append(prob)
 
-print(*result)
     
+print(*result)
+with open("rosalind_prob_sol.txt", "x") as f:
+    print(*result, file=f)
+
+
             
 
 
