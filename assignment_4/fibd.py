@@ -6,6 +6,7 @@ def bunny(n,k):
     if n <= 2:
         return 1
     else:
-        return bunny(n-1, k) + 2*bunny(n-2,k) - bunny(n-k, k)
+        return 2*bunny(n-1,k) - bunny(n-k,k) - bunny()
+        
 
 print(bunny(n,k))
