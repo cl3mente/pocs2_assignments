@@ -6,7 +6,9 @@ def bunny(n,k):
     if n <= 2:
         return 1
     else:
-        return bunny(n-1, k) + 2*bunny(n-2, k) - 
+        return sum([bunny(x,k) for x in range(n-k, n-1)])
+
+
         
 
 print(bunny(n,k))

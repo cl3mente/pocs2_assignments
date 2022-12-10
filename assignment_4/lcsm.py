@@ -1,15 +1,26 @@
 import Bio.SeqIO
+import re
+
 with open("rosalind_lcsm.txt") as h:
     seqlist = [str(seq.seq) for seq in Bio.SeqIO.parse(h, "fasta")]
 
-print(seqlist)
+# print(seqlist)
 
-result = ""
+consensus = ""
+scan = ""
+resultList = []
 
-for base in seqlist[0]:
-    check = "true"
-    for i in range(1, len(seqlist)):
-        if base not in seqlist[i]:
-            check = "false"
-        if check == "true":
-            result += base
+for i in range(len(seqlist[0])):
+    scan += seqlist[0][i]
+    check = True
+    for seq in seqlist:
+        if scan not in seq:
+            scan = ""
+            check = False
+            resultList.append(consensus)
+            continue
+    if check == True:
+        consensus = scan
+
+print(resultList)
+print(max(resultList, key=len))
