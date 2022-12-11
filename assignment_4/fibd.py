@@ -3,12 +3,11 @@ with open("rosalind_fibd.txt") as f:
 print(n,k)
 
 def bunny(n,k):
-    if n <= 2:
-        return 1
-    else:
-        return sum([bunny(x,k) for x in range(n-k, n-1)])
+  by_age = [1] + [0]*(k-1)
+  for i in range(n-1):
+    by_age = [sum(by_age[1:])] + by_age[:-1]
+    print(by_age)
+  return sum(by_age)
 
-
-        
 
 print(bunny(n,k))
