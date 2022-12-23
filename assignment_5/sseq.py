@@ -1,4 +1,5 @@
 from Bio import SeqIO
+
 with open("rosalind_sseq.txt") as h:
     s,t = SeqIO.parse(h, 'fasta')
     s,t = s.seq, t.seq
