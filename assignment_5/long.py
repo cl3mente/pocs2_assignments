@@ -6,7 +6,7 @@ with open("rosalind_long.txt") as h:
     for read in SeqIO.parse(h, "fasta"):
         reads.append(str(read.seq))
 
-def superstring(reads):
+def superstring(reads: list):
     #this function takes a list and returns a superstring
 
     match = reads.pop(0)
