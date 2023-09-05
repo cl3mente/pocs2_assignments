@@ -26,6 +26,8 @@ for GC in A:
 
     B.append(prob * (n - len(s) + 1))
 
+    
+
 
 print(*B, sep = " ")
 
